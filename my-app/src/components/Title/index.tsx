@@ -10,5 +10,6 @@ export const Title = (props: h1Type): ReactElement => {
         <TitleStyle>
         <h1>{props.text}</h1>
         </TitleStyle>
+
     )
 }

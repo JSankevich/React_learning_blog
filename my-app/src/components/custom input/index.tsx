@@ -2,7 +2,10 @@ import React, {ReactElement, useState} from "react";
 import { InputWrapper } from "./style";
 type CustomInputProps = {
     type: 'password' | 'email' | 'text',
-
+    name: string,
+    placeholder:'Введите текст',
+    value: string,
+    onChange: () => void,
 }
 export const CustomInput = ({type}:CustomInputProps): ReactElement => {
     const [value, setValue] = useState('');
