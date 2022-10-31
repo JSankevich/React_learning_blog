@@ -1,33 +1,30 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const ButtonStyle = styled.div `
-  width: 132px;
-  height: 56px;
-  background-color: #2231AA;
+export const ButtonWrapper = styled.div `
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 48px;
   
   button {
-  padding: 15px;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  background-color: #2231AA;
-  margin-top: 10px;
-  color: white;
-  border: none;
-  border-radius: 2px;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px;
-  width: 132px;
-  height: 56px;
-  }
-  
-  &:hover {
-    opacity: 0.9;
-    background-color: #5360CD;
-    transition: 1s ease-in-out;
+    padding: 16px 32px;
+    width: 544px;
+    height: 56px;
+    background: #2231AA;
+    border-radius: 2px;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    color: #FFFFFF;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: #5360CD;
+      transition: ease-in-out 1s;
+    }
   }
 `;
-
-

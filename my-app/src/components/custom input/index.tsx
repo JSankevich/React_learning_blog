@@ -1,13 +1,14 @@
 import React, {ReactElement, useState} from "react";
-import { InputWrapper } from "./style";
+import { InputWrapper, Wrapper } from "./style";
 type CustomInputProps = {
-    type: 'password' | 'email' | 'text',
-    name: string,
-    placeholder:'Введите текст',
-    value: string,
-    onChange: () => void,
+    type?: 'password' | 'email' | 'text',
+    name?: string,
+    placeholder?: 'Your email' | 'Your password',
+    value?: string,
+    onChange?: () => void,
+    label?: 'Email' | 'Password',
 }
-export const CustomInput = ({type}:CustomInputProps): ReactElement => {
+export const CustomInput = ({type,placeholder,label}:CustomInputProps): ReactElement => {
     const [value, setValue] = useState('');
     const [error, setError] = useState(false);
 
@@ -31,7 +32,8 @@ export const CustomInput = ({type}:CustomInputProps): ReactElement => {
     }
     return (
         <InputWrapper error={error}>
-        <input type ={type} value={value} onChange={handleChange} onBlur={validateValue} />
+            <Wrapper><label>{label}</label></Wrapper>
+            <input type ={type} value={value} onChange={handleChange} onBlur={validateValue} placeholder={placeholder} />
             {error && <span>Error text</span>}
         </InputWrapper>
     )
