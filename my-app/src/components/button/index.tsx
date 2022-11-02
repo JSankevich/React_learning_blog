@@ -1,14 +1,14 @@
 import React, {ReactElement} from "react";
-import {ButtonStyle} from "./style";
+import { ButtonWrapper } from './style';
 
-export type ButtonType = {
-    type: 'Primary' | 'secondary',
+export type ButtonProps = {
+    text: string,
 }
 
-export const Button = (props:ButtonType): ReactElement => {
+export const Button = ({text}:ButtonProps): ReactElement => {
     return (
-        <ButtonStyle>
-        <button>1</button>
-        </ButtonStyle>
+        <ButtonWrapper>
+        <button>{text}</button>
+        </ButtonWrapper>
     )
 };

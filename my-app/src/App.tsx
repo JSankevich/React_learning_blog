@@ -1,20 +1,25 @@
 import React from 'react';
-import {Button} from "./components/button";
-import {Title} from "./components/Title";
-import {Index} from "./components/BurgerMenu/User About";
-import {CustomInput} from "./components/custom input";
 import {Layout} from "./containers/layout";
-import {Burger} from "./components/BurgerMenu";
+import {ThemeProvider} from "./components/ThemeProvider";
+import {MainPage} from "./components/main";
+import {SignInForm} from "./containers/signInForm";
+
+
 
 function App() {
   return (
     <div className="App">
+        <ThemeProvider>
         <Layout>
-        <Title text="Sign In" />
-        <Button type={'Primary'}/>
+            <MainPage />
+            <SignInForm />
+
         </Layout>
+        </ThemeProvider>
+
     </div>
   );
 }
 
 export default App;
+

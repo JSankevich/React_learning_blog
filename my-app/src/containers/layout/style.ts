@@ -1,7 +1,14 @@
 import styled from "styled-components";
 
 export const BackgroundWrapper = styled.div `
-  background-color: #F3F3F3;
-  width: 100%;
-  height: 100%;
+    background-color: #E5E5E5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+`;
+
+export const PageContainer = styled.div `
+    width: 1120px;
+    height: 100%;
 `;
