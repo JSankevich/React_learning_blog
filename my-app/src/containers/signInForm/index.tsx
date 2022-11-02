@@ -1,7 +1,8 @@
 import React, {FormEventHandler, useState} from "react";
 import {CustomInput} from "../../components/custom input";
-import { Container } from "./style";
+import { Container, SignUpNext, ForgotPassword, BackHome } from "./style";
 import {Button} from "../../components/button";
+import {Title} from "../../components/Title";
 
 
 export const SignInForm = () => {
@@ -12,11 +13,16 @@ export const SignInForm = () => {
 
     return (
         <>
+        <BackHome>Back to home</BackHome>
+        <Title text={'Sign In'} />
         <Container>
             <CustomInput type='email' placeholder='Your email' label='Email' />
             <CustomInput type='password' placeholder='Your password' label='Password' />
-            <p>Forgot password?</p>
+            <ForgotPassword>Forgot password?</ForgotPassword>
             <Button text='Sign In'/>
+            <SignUpNext>
+                <p>Don’t have an account? <span>Sign Up</span></p>
+            </SignUpNext>
         </Container>
         </>
     )

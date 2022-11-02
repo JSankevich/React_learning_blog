@@ -6,6 +6,7 @@ export const TabsLine = styled.div `
     border-bottom: 1px solid #DADADA;
     display: flex;
     flex-direction: row;
+    margin-top: 47px;
 `;
 
 export const Tab = styled.div `

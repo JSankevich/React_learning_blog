@@ -32,7 +32,7 @@ export const Burger = (): ReactElement => {
                 </BurgerIcon>
             </BurgerWrapper>
             <SearchInput>
-                <input placeholder={'Введите текст для начала поиска ...'}/>
+                <input placeholder={'Search...'}/>
             </SearchInput>
             <RightPanel>
                 <SearchWrapper>
