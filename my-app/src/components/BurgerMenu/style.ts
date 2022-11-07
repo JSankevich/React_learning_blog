@@ -17,13 +17,14 @@ export const BurgerWrapper = styled.div `
     border: 1px solid #5360CD;
     background-color: #2231AA;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   `;
 
 export const BurgerIcon = styled.div `
   width: 20px;
   height: 22px;
-  margin-left: 32px;
-  margin-top: 34px;
   
 span {
     height: 2px;
@@ -102,6 +103,8 @@ export const SearchInput = styled.div `
     outline: 0;
     box-shadow: none;
     border: none;
+    color: white;
+    padding-left: 32px;
     
     &:focus {
       outline: 0;
@@ -123,7 +126,9 @@ export const MenuWrapper = styled.ul `
 
     li {
       list-style-type: none;
-      margin-left: -40px;
+      width: 236px;
+      height: 83px;
+      margin-top: 5px;
     }
 `;
 
