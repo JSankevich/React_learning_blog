@@ -1,11 +1,12 @@
-import React, {FormEventHandler, useState} from "react";
+import React, {FormEventHandler, ReactElement, useState} from "react";
 import {CustomInput} from "../../components/custom input";
 import { Container, SignUpNext, ForgotPassword, BackHome } from "./style";
 import {Button} from "../../components/button";
 import {Title} from "../../components/Title";
+import {NavLink} from "react-router-dom";
 
 
-export const SignInForm = () => {
+export const SignInForm = (): ReactElement => {
     const [value, setValue] = useState({
         password: '',
         email: '',
@@ -13,7 +14,7 @@ export const SignInForm = () => {
 
     return (
         <>
-        <BackHome>Back to home</BackHome>
+            <NavLink to="/"><BackHome>Back to home</BackHome></NavLink>
         <Title text={'Sign In'} />
         <Container>
             <CustomInput type='email' placeholder='Your email' label='Email' />

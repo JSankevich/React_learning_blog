@@ -7,6 +7,7 @@ import like from './images/like.png';
 import dislike from './images/dislike.png';
 import Bookmark from './images/Bookmark.png';
 import MoreHorizontal from './images/MoreHorizontal.png';
+import {NavLink} from "react-router-dom";
 
 type CardInfo = {
     id?: number,
@@ -17,7 +18,6 @@ type CardInfo = {
     title?: string,
     author?: number,
 }
-//type ArrayOfCard = [CardInfo, ...CardInfo[]];
 
 export const BigCardWrapper = () => {
     const [items, setItems] = useState<CardInfo[]>([]);
@@ -30,6 +30,7 @@ export const BigCardWrapper = () => {
             <Wrapper>
             <WrLeft>
             {items.map(e =>
+            <NavLink to="/SelectedPost">
             <BigCard key={e.id}>
                 <TextContent>
                     <DataPost>{e.date}</DataPost>
@@ -56,10 +57,12 @@ export const BigCardWrapper = () => {
                     </OptionWrapper>
                 </ButtonsForCard>
             </BigCard>
+            </NavLink>
             ).slice(2,3)};
 
             <MediumCardWrapper>
             {items.map(e =>
+                <NavLink to="/SelectedPost">
                 <MediumCard key={e.id}>
                 <ImageWrapperMed>
                     <img src={e.image} alt={'Medium Card'}/>
@@ -85,12 +88,14 @@ export const BigCardWrapper = () => {
                     </OptionWrapper>
                 </ButtonsForCardMed>
             </MediumCard>
+            </NavLink>
             ).slice(3,7)}
             </MediumCardWrapper>;
             </WrLeft>
 
             <LittleCardWrapper>
                 {items.map(e =>
+                    <NavLink to="/SelectedPost">
                     <LittleCard key={e.id}>
                         <TextContentLit>
                             <DataPostLit>{e.date}</DataPostLit>
@@ -116,6 +121,7 @@ export const BigCardWrapper = () => {
                             </OptionWrapper>
                         </ButtonsForCard>
                     </LittleCard>
+                    </NavLink>
                 ).slice(3,9)}
             </LittleCardWrapper>;
                 </Wrapper>
