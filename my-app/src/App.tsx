@@ -4,8 +4,8 @@ import {ThemeProvider} from "./components/ThemeProvider";
 import {MainPage} from "./components/main";
 import {SignInForm} from "./containers/signInForm";
 import {Global} from "./global";
-import {Success} from "./containers/Success";
-
+import {Routes, Route} from "react-router-dom";
+import {SelectedPost} from "./containers/SelectedPost";
 
 
 function App() {
@@ -15,9 +15,11 @@ function App() {
     <div className="App">
         <ThemeProvider>
         <Layout>
-            <MainPage />
-            <SignInForm />
-            <Success />
+            <Routes>
+                <Route path="/" element={<MainPage />} />
+                <Route path="/SignIn" element={<SignInForm />} />
+                <Route path=":slug" element={<SelectedPost />} />
+            </Routes>
         </Layout>
         </ThemeProvider>
     </div>

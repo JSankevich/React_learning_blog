@@ -1,5 +1,6 @@
 import React, {ReactElement} from "react";
 import {UserStyle, UserInfo, IconUserWrapper, UserNameWrapper} from "./style";
+import {NavLink} from "react-router-dom";
 
 type indexType = {
     username: string,
@@ -8,6 +9,7 @@ type indexType = {
 
 export const Index = (props: indexType): ReactElement => {
     return  (
+        <NavLink to="/SignIn">
         <UserStyle>
             <UserInfo>
                 <IconUserWrapper>
@@ -16,5 +18,6 @@ export const Index = (props: indexType): ReactElement => {
                 <UserNameWrapper>{props.username}</UserNameWrapper>
             </UserInfo>
         </UserStyle>
+        </NavLink>
     )
 }
