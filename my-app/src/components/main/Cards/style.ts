@@ -241,6 +241,10 @@ export const Wrapper = styled.div `
   display: flex;
   flex-direction: row;
   margin-bottom: 33px;
+  
+  a {
+    text-decoration: none;
+  }
 `;
 
 

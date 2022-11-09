@@ -10,6 +10,10 @@ export const UserStyle = styled.div `
   background-color: #2231AA;
   border: 1px solid #5360CD;
   cursor: pointer;
+  
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const UserInfo = styled.div `

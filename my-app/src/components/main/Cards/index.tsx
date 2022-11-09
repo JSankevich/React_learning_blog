@@ -9,7 +9,7 @@ import Bookmark from './images/Bookmark.png';
 import MoreHorizontal from './images/MoreHorizontal.png';
 import {NavLink} from "react-router-dom";
 
-type CardInfo = {
+export type CardInfo = {
     id?: number,
     image?: string,
     text?: string,
@@ -20,35 +20,35 @@ type CardInfo = {
 }
 
 export const BigCardWrapper = () => {
-    const [items, setItems] = useState<CardInfo[]>([]);
+    const [posts, setPosts] = useState<CardInfo[]>([]);
     useEffect(() => {
         fetch('https://studapi.teachmeskills.by/blog/posts/?lesson_num=50&limit=20')
             .then(response => response.json())
-            .then(data => setItems(data.results))
+            .then(data => setPosts(data.results))
     },[])
     return (
             <Wrapper>
             <WrLeft>
-            {items.map(e =>
-            <NavLink to="/SelectedPost">
-            <BigCard key={e.id}>
+            {posts.map((post) =>
+            <NavLink key={post.id} to={`/post/${post.id}`}>
+            <BigCard>
                 <TextContent>
-                    <DataPost>{e.date}</DataPost>
-                    <TitlePost>{e.title}</TitlePost>
-                    <TextPost>{e.text}</TextPost>
+                    <DataPost>{post.date}</DataPost>
+                    <TitlePost>{post.title}</TitlePost>
+                    <TextPost>{post.text}</TextPost>
                 </TextContent>
                 <ImageWrapper>
-                    <img src={e.image} alt={'Big Card'}/>
+                    <img src={post.image} alt={'Big Card'}/>
                 </ImageWrapper>
                 <ButtonsForCard>
                     <LikesWrapper>
                         <Like>
                             <img src={like} alt={'like'}/>
-                            <p>{e.lesson_num}</p>
+                            <p>{post.lesson_num}</p>
                         </Like>
                         <Dislike>
                             <img src={dislike} alt={'dislike'}/>
-                            <p>{e.lesson_num}</p>
+                            <p>{post.lesson_num}</p>
                         </Dislike>
                     </LikesWrapper>
                     <OptionWrapper>
@@ -61,21 +61,21 @@ export const BigCardWrapper = () => {
             ).slice(2,3)};
 
             <MediumCardWrapper>
-            {items.map(e =>
-                <NavLink to="/SelectedPost">
-                <MediumCard key={e.id}>
+            {posts.map((post) =>
+                <NavLink key={post.id} to={`/post/${post.id}`}>
+                <MediumCard>
                 <ImageWrapperMed>
-                    <img src={e.image} alt={'Medium Card'}/>
+                    <img src={post.image} alt={'Medium Card'}/>
                 </ImageWrapperMed>
                 <TextContentMed>
-                <DataPostMed>{e.date}</DataPostMed>
-                <TitlePostMed>{e.title}</TitlePostMed>
+                <DataPostMed>{post.date}</DataPostMed>
+                <TitlePostMed>{post.title}</TitlePostMed>
                 </TextContentMed>
                 <ButtonsForCardMed>
                     <LikesWrapper>
                         <Like>
                             <img src={like} alt={'like'}/>
-                            <p>{e.lesson_num}</p>
+                            <p>{post.lesson_num}</p>
                         </Like>
                         <Dislike>
                             <img src={dislike} alt={'dislike'}/>
@@ -94,21 +94,21 @@ export const BigCardWrapper = () => {
             </WrLeft>
 
             <LittleCardWrapper>
-                {items.map(e =>
-                    <NavLink to="/SelectedPost">
-                    <LittleCard key={e.id}>
+                {posts.map((post) =>
+                    <NavLink key={post.id} to={`/post/${post.id}`}>
+                    <LittleCard>
                         <TextContentLit>
-                            <DataPostLit>{e.date}</DataPostLit>
-                            <TitlePostLit>{e.title}</TitlePostLit>
+                            <DataPostLit>{post.date}</DataPostLit>
+                            <TitlePostLit>{post.title}</TitlePostLit>
                         </TextContentLit>
                         <ImageWrapperLit>
-                            <img src={e.image} alt={'Medium Card'}/>
+                            <img src={post.image} alt={'Medium Card'}/>
                         </ImageWrapperLit>
                         <ButtonsForCard>
                             <LikesWrapper>
                                 <Like>
                                     <img src={like} alt={'like'}/>
-                                    <p>{e.lesson_num}</p>
+                                    <p>{post.lesson_num}</p>
                                 </Like>
                                 <Dislike>
                                     <img src={dislike} alt={'dislike'}/>
