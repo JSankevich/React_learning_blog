@@ -18,7 +18,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<MainPage />} />
                 <Route path="/SignIn" element={<SignInForm />} />
-                <Route path=":slug" element={<SelectedPost />} />
+                <Route path="/post/:id" element={<SelectedPost />} />
             </Routes>
         </Layout>
         </ThemeProvider>

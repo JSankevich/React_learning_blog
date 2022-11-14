@@ -7,18 +7,17 @@ export const FooterWrapper = styled.div `
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid #DADADA;
-
+    margin-top: 3%;
 `;
 
 export const FooterContent = styled.div `
     width: 1120px;
-    height: 24px;
+    height: 93px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
-    
+    border-top: 1px solid #DADADA;
+  
     p {
       width: 138px;
       height: 24px;

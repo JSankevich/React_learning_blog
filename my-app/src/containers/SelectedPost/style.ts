@@ -3,12 +3,22 @@ import styled from "styled-components";
 export const SelectedWrapper = styled.div `
     width: 1120px;
     height: 100%;
+  
+    a {
+      text-decoration: none;
+    }
 `;
 
 export const ImageSelectedPost = styled.div `
     width: 992px;
     height: 518px;
     margin: 48px auto;
+    
+    img {
+      width: 992px;
+      height: 518px;
+      object-fit: contain;
+    }
 `;
 
 export const DescriptionSelected = styled.div `

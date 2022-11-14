@@ -6,35 +6,34 @@ import like from "./images/like.png";
 import dislike from "./images/dislike.png";
 import Bookmark from "./images/Bookmark.png";
 import bigPost from "./images/bigPost.svg";
-import {NavLink} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
+import {CardInfo} from "../../components/main/Cards";
+import {BackHome} from "../signInForm/style";
 
-type CardInfo = {
-    id?: number,
-    image?: string,
-    text?: string,
-    date?: string,
-    lesson_num?: number,
-    title?: string,
-    author?: number,
+type ItemInfo = {
+    id: string,
 }
 
 export const SelectedPost = ():ReactElement => {
-    const [items, setItems] = useState<CardInfo[]>([]);
+    const { id } = useParams<ItemInfo>();
+    const [post, setPost] = useState<CardInfo[]>([]);
     useEffect(() => {
         fetch('https://studapi.teachmeskills.by/blog/posts/?lesson_num=50&limit=20')
             .then(response => response.json())
-            .then(data => setItems(data.results))
+            .then(data => setPost (data.results))
     },[])
+
     return (
         <>
         <SelectedWrapper>
-            <NavLink to="/"><Home>Home</Home></NavLink>
-        <TitleSelected>Astronauts prep for new solar arrays on nearly seven-hour spacewalk</TitleSelected>
-        <ImageSelectedPost><img src={bigPost} alt='image' /></ImageSelectedPost>
-        <DescriptionSelected>Astronauts Kayla Barron and Raja Chari floated out of the International Space Station
-            airlock for a spacewalk Tuesday, installing brackets and struts to support new solar arrays to upgrade the
-            research lab’s power system on the same day that crewmate Mark Vande Hei marked his 341st day in orbit,
-            a U.S. record for a single spaceflight.</DescriptionSelected>
+        {post.map ((item) =>
+        item.id == Number(id) &&
+        <NavLink key={item.id} to={`/post/${item.id}`}>
+
+        <NavLink to="/"><Home>Home</Home></NavLink>
+        <TitleSelected>{item.title}</TitleSelected>
+        <ImageSelectedPost><img src={item.image} alt='image' /></ImageSelectedPost>
+        <DescriptionSelected>{item.text}</DescriptionSelected>
         <ButtonsLineSelected>
             <WrapperLikeDislike>
                 <LikeWrapperSelected><img src={like} alt='like' /></LikeWrapperSelected>
@@ -45,6 +44,8 @@ export const SelectedPost = ():ReactElement => {
                 <p>Add to favorites</p>
             </BookmarkWrapperSelected>
         </ButtonsLineSelected>
+        </NavLink>
+        )}
         </SelectedWrapper>
         </>
     )

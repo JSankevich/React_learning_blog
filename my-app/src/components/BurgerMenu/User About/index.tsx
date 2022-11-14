@@ -9,15 +9,15 @@ type indexType = {
 
 export const Index = (props: indexType): ReactElement => {
     return  (
-        <NavLink to="/SignIn">
         <UserStyle>
-            <UserInfo>
-                <IconUserWrapper>
-                    <p>{props.username.split(' ')[0].charAt(0).toUpperCase()+props.username.split(' ')[1].charAt(0).toUpperCase()}</p>
-                </IconUserWrapper>
-                <UserNameWrapper>{props.username}</UserNameWrapper>
-            </UserInfo>
+            <NavLink to="/SignIn">
+                <UserInfo>
+                    <IconUserWrapper>
+                        <p>{props.username.split(' ')[0].charAt(0).toUpperCase()+props.username.split(' ')[1].charAt(0).toUpperCase()}</p>
+                    </IconUserWrapper>
+                    <UserNameWrapper>{props.username}</UserNameWrapper>
+                </UserInfo>
+            </NavLink>
         </UserStyle>
-        </NavLink>
     )
 }
