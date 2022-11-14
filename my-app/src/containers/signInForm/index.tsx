@@ -14,7 +14,7 @@ export const SignInForm = (): ReactElement => {
 
     return (
         <>
-            <NavLink to="/"><BackHome>Back to home</BackHome></NavLink>
+        <BackHome><NavLink to="/">Back to home</NavLink></BackHome>
         <Title text={'Sign In'} />
         <Container>
             <CustomInput type='email' placeholder='Your email' label='Email' />
@@ -22,7 +22,7 @@ export const SignInForm = (): ReactElement => {
             <ForgotPassword>Forgot password?</ForgotPassword>
             <Button text='Sign In'/>
             <SignUpNext>
-                <p>Don’t have an account? <span>Sign Up</span></p>
+                <p>Don’t have an account? <NavLink to="/SignUp"><span>Sign Up</span></NavLink></p>
             </SignUpNext>
         </Container>
         </>

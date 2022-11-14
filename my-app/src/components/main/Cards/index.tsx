@@ -8,47 +8,47 @@ import dislike from './images/dislike.png';
 import Bookmark from './images/Bookmark.png';
 import MoreHorizontal from './images/MoreHorizontal.png';
 import {NavLink} from "react-router-dom";
+import {CardInfo} from "../../../redux/posts/types";
+import {useDispatch, useSelector} from "react-redux";
+import {addPosts} from "../../../redux/posts/action";
+import {useAppSelector} from "../../../redux/rootReducer";
 
-export type CardInfo = {
-    id?: number,
-    image?: string,
-    text?: string,
-    date?: string,
-    lesson_num?: number,
-    title?: string,
-    author?: number,
-}
 
 export const BigCardWrapper = () => {
-    const [posts, setPosts] = useState<CardInfo[]>([]);
+    const [item, setItem] = useState<CardInfo[]>([]);
+    const dispatch = useDispatch();
+    const posts = useAppSelector(state => state.posts);
+    console.log (posts);
     useEffect(() => {
         fetch('https://studapi.teachmeskills.by/blog/posts/?lesson_num=50&limit=20')
             .then(response => response.json())
-            .then(data => setPosts(data.results))
+            .then(data => {
+                dispatch(addPosts(data.results))
+            })
     },[])
     return (
             <Wrapper>
             <WrLeft>
-            {posts.map((post) =>
-            <NavLink key={post.id} to={`/post/${post.id}`}>
+            {posts.map((e) =>
+            <NavLink key={e.id} to={`/post/${e.id}`}>
             <BigCard>
                 <TextContent>
-                    <DataPost>{post.date}</DataPost>
-                    <TitlePost>{post.title}</TitlePost>
-                    <TextPost>{post.text}</TextPost>
+                    <DataPost>{e.date}</DataPost>
+                    <TitlePost>{e.title}</TitlePost>
+                    <TextPost>{e.text}</TextPost>
                 </TextContent>
                 <ImageWrapper>
-                    <img src={post.image} alt={'Big Card'}/>
+                    <img src={e.image} alt={'Big Card'}/>
                 </ImageWrapper>
                 <ButtonsForCard>
                     <LikesWrapper>
                         <Like>
                             <img src={like} alt={'like'}/>
-                            <p>{post.lesson_num}</p>
+                            <p>{e.lesson_num}</p>
                         </Like>
                         <Dislike>
                             <img src={dislike} alt={'dislike'}/>
-                            <p>{post.lesson_num}</p>
+                            <p>{e.lesson_num}</p>
                         </Dislike>
                     </LikesWrapper>
                     <OptionWrapper>
@@ -61,21 +61,21 @@ export const BigCardWrapper = () => {
             ).slice(2,3)};
 
             <MediumCardWrapper>
-            {posts.map((post) =>
-                <NavLink key={post.id} to={`/post/${post.id}`}>
+            {posts.map((e) =>
+                <NavLink key={e.id} to={`/post/${e.id}`}>
                 <MediumCard>
                 <ImageWrapperMed>
-                    <img src={post.image} alt={'Medium Card'}/>
+                    <img src={e.image} alt={'Medium Card'}/>
                 </ImageWrapperMed>
                 <TextContentMed>
-                <DataPostMed>{post.date}</DataPostMed>
-                <TitlePostMed>{post.title}</TitlePostMed>
+                <DataPostMed>{e.date}</DataPostMed>
+                <TitlePostMed>{e.title}</TitlePostMed>
                 </TextContentMed>
                 <ButtonsForCardMed>
                     <LikesWrapper>
                         <Like>
                             <img src={like} alt={'like'}/>
-                            <p>{post.lesson_num}</p>
+                            <p>{e.lesson_num}</p>
                         </Like>
                         <Dislike>
                             <img src={dislike} alt={'dislike'}/>
@@ -94,21 +94,21 @@ export const BigCardWrapper = () => {
             </WrLeft>
 
             <LittleCardWrapper>
-                {posts.map((post) =>
-                    <NavLink key={post.id} to={`/post/${post.id}`}>
+                {posts.map((e) =>
+                    <NavLink key={e.id} to={`/post/${e.id}`}>
                     <LittleCard>
                         <TextContentLit>
-                            <DataPostLit>{post.date}</DataPostLit>
-                            <TitlePostLit>{post.title}</TitlePostLit>
+                            <DataPostLit>{e.date}</DataPostLit>
+                            <TitlePostLit>{e.title}</TitlePostLit>
                         </TextContentLit>
                         <ImageWrapperLit>
-                            <img src={post.image} alt={'Medium Card'}/>
+                            <img src={e.image} alt={'Medium Card'}/>
                         </ImageWrapperLit>
                         <ButtonsForCard>
                             <LikesWrapper>
                                 <Like>
                                     <img src={like} alt={'like'}/>
-                                    <p>{post.lesson_num}</p>
+                                    <p>{e.lesson_num}</p>
                                 </Like>
                                 <Dislike>
                                     <img src={dislike} alt={'dislike'}/>

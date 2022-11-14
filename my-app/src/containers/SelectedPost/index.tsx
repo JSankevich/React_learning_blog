@@ -7,7 +7,7 @@ import dislike from "./images/dislike.png";
 import Bookmark from "./images/Bookmark.png";
 import bigPost from "./images/bigPost.svg";
 import {NavLink, useParams} from "react-router-dom";
-import {CardInfo} from "../../components/main/Cards";
+import {CardInfo} from "../../redux/posts/types";
 import {BackHome} from "../signInForm/style";
 
 type ItemInfo = {

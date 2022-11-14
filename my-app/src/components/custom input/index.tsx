@@ -3,10 +3,11 @@ import { InputWrapper, Wrapper } from "./style";
 type CustomInputProps = {
     type?: 'password' | 'email' | 'text',
     name?: string,
-    placeholder?: 'Your email' | 'Your password',
+    placeholder?: 'Your email' | 'Your password' | 'Your name' | 'Confirm password',
     value?: string,
-    onChange?: () => void,
-    label?: 'Email' | 'Password',
+    //как типизировать onChange? если ставить ()=>void ругается чт м.б. underfined
+    onChange?: any,
+    label?: 'Email' | 'Password' | 'Name' | 'Confirm password',
 }
 export const CustomInput = ({type,placeholder,label}:CustomInputProps): ReactElement => {
     const [value, setValue] = useState('');

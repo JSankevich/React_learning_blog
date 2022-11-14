@@ -6,6 +6,8 @@ import {SignInForm} from "./containers/signInForm";
 import {Global} from "./global";
 import {Routes, Route} from "react-router-dom";
 import {SelectedPost} from "./containers/SelectedPost";
+import {SignUpForm} from "./containers/SignUpForm";
+import {Switcher} from "./components/switcher";
 
 
 function App() {
@@ -18,8 +20,10 @@ function App() {
             <Routes>
                 <Route path="/" element={<MainPage />} />
                 <Route path="/SignIn" element={<SignInForm />} />
+                <Route path="/SignUp" element={<SignUpForm />} />
                 <Route path="/post/:id" element={<SelectedPost />} />
             </Routes>
+            <Switcher />
         </Layout>
         </ThemeProvider>
     </div>
