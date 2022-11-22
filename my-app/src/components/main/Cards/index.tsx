@@ -17,8 +17,8 @@ import {useAppSelector} from "../../../redux/rootReducer";
 export const BigCardWrapper = () => {
     const [item, setItem] = useState<CardInfo[]>([]);
     const dispatch = useDispatch();
-    const posts = useAppSelector(state => state.posts);
-    console.log (posts);
+    const postsArr = useAppSelector(state => state.postReducer.posts);
+    console.log (postsArr);
     useEffect(() => {
         fetch('https://studapi.teachmeskills.by/blog/posts/?lesson_num=50&limit=20')
             .then(response => response.json())
@@ -29,7 +29,7 @@ export const BigCardWrapper = () => {
     return (
             <Wrapper>
             <WrLeft>
-            {posts.map((e) =>
+            {postsArr.map((e) =>
             <NavLink key={e.id} to={`/post/${e.id}`}>
             <BigCard>
                 <TextContent>
@@ -61,7 +61,7 @@ export const BigCardWrapper = () => {
             ).slice(2,3)};
 
             <MediumCardWrapper>
-            {posts.map((e) =>
+            {postsArr.map((e) =>
                 <NavLink key={e.id} to={`/post/${e.id}`}>
                 <MediumCard>
                 <ImageWrapperMed>
@@ -94,7 +94,7 @@ export const BigCardWrapper = () => {
             </WrLeft>
 
             <LittleCardWrapper>
-                {posts.map((e) =>
+                {postsArr.map((e) =>
                     <NavLink key={e.id} to={`/post/${e.id}`}>
                     <LittleCard>
                         <TextContentLit>

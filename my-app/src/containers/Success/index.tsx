@@ -15,7 +15,7 @@ export const Success = () => {
                 <p>Email confirmed.</p>
                 <p>Your registration is now completed</p>
                 </ContainerEmailConfirmed>
-                <Button text='Go to home'/>
+                <Button text='Go to home' onClick={() => console.log('click')} />
             </ContainerSuccess>
         </>
     )

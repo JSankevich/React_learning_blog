@@ -8,6 +8,7 @@ type CustomInputProps = {
     //как типизировать onChange? если ставить ()=>void ругается чт м.б. underfined
     onChange?: any,
     label?: 'Email' | 'Password' | 'Name' | 'Confirm password',
+    error?: boolean,
 }
 export const CustomInput = ({type,placeholder,label}:CustomInputProps): ReactElement => {
     const [value, setValue] = useState('');

@@ -1,15 +1,15 @@
-import React, {ReactElement} from "react";
+import React, {ReactElement, ReactNode} from "react";
 import { ButtonWrapper } from './style';
 
 export type ButtonProps = {
     text: string,
-    onClick?: () => void,
+    onClick: () => void;
 }
 
-export const Button = ({text}:ButtonProps): ReactElement => {
+export const Button = ({text}:ButtonProps, {onClick}: ButtonProps): ReactElement => {
     return (
         <ButtonWrapper>
-        <button>{text}</button>
+        <button onClick={onClick}>{text}</button>
         </ButtonWrapper>
     )
 };

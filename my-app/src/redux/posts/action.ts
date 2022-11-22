@@ -12,9 +12,9 @@ export const addPosts = (postsArray: CardInfo[]) => ({
     }
 })
 
-export const toggleFavourite = (id: number) => ({
+export const toggleFavourite = (favouriteArray: number[]) => ({
     type: ACTION_POST_TYPES.TOGGLE_FAVOURITE,
     payload: {
-        id
+        id: favouriteArray
     }
 })

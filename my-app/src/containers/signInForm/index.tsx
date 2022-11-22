@@ -20,7 +20,7 @@ export const SignInForm = (): ReactElement => {
             <CustomInput type='email' placeholder='Your email' label='Email' />
             <CustomInput type='password' placeholder='Your password' label='Password' />
             <ForgotPassword>Forgot password?</ForgotPassword>
-            <Button text='Sign In'/>
+            <Button text='Sign In' onClick={() => { console.log("button clicked");}} />
             <SignUpNext>
                 <p>Don’t have an account? <NavLink to="/SignUp"><span>Sign Up</span></NavLink></p>
             </SignUpNext>
@@ -28,3 +28,5 @@ export const SignInForm = (): ReactElement => {
         </>
     )
 }
+
+//фунция по сабмиту как в signup dispatch (signInRequest (valuйe))
