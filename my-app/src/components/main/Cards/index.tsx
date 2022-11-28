@@ -8,74 +8,75 @@ import dislike from './images/dislike.png';
 import Bookmark from './images/Bookmark.png';
 import MoreHorizontal from './images/MoreHorizontal.png';
 import {NavLink} from "react-router-dom";
+import {CardInfo} from "../../../redux/posts/types";
+import {useDispatch, useSelector} from "react-redux";
+import {addPosts} from "../../../redux/posts/action";
+import {useAppSelector} from "../../../redux/rootReducer";
 
-export type CardInfo = {
-    id?: number,
-    image?: string,
-    text?: string,
-    date?: string,
-    lesson_num?: number,
-    title?: string,
-    author?: number,
-}
 
 export const BigCardWrapper = () => {
-    const [posts, setPosts] = useState<CardInfo[]>([]);
+    const [item, setItem] = useState<CardInfo[]>([]);
+    const dispatch = useDispatch();
+    const postsArr = useAppSelector(state => state.postReducer.posts);
+    console.log (postsArr);
     useEffect(() => {
         fetch('https://studapi.teachmeskills.by/blog/posts/?lesson_num=50&limit=20')
             .then(response => response.json())
-            .then(data => setPosts(data.results))
+            .then(data => {
+                dispatch(addPosts(data.results))
+            })
     },[])
     return (
             <Wrapper>
             <WrLeft>
-            {posts.map((post) =>
-            <NavLink key={post.id} to={`/post/${post.id}`}>
+            {postsArr.map((e) =>
             <BigCard>
+                <NavLink key={e.id} to={`/post/${e.id}`}>
                 <TextContent>
-                    <DataPost>{post.date}</DataPost>
-                    <TitlePost>{post.title}</TitlePost>
-                    <TextPost>{post.text}</TextPost>
+                    <DataPost>{e.date}</DataPost>
+                    <TitlePost>{e.title}</TitlePost>
+                    <TextPost>{e.text}</TextPost>
                 </TextContent>
+                </NavLink>
                 <ImageWrapper>
-                    <img src={post.image} alt={'Big Card'}/>
+                    <img src={e.image} alt={'Big Card'}/>
                 </ImageWrapper>
                 <ButtonsForCard>
                     <LikesWrapper>
                         <Like>
                             <img src={like} alt={'like'}/>
-                            <p>{post.lesson_num}</p>
+                            <p>{e.lesson_num}</p>
                         </Like>
                         <Dislike>
                             <img src={dislike} alt={'dislike'}/>
-                            <p>{post.lesson_num}</p>
+                            <p>{e.lesson_num}</p>
                         </Dislike>
                     </LikesWrapper>
                     <OptionWrapper>
-                        <Save><img src={Bookmark} alt={'bookmark'}/></Save>
+                        <Save onClick={():void => console.log('clicked')}><img src={Bookmark} alt={'bookmark'}/></Save>
                         <More><img src={MoreHorizontal} alt={'more'}/></More>
                     </OptionWrapper>
                 </ButtonsForCard>
             </BigCard>
-            </NavLink>
             ).slice(2,3)};
 
             <MediumCardWrapper>
-            {posts.map((post) =>
-                <NavLink key={post.id} to={`/post/${post.id}`}>
+            {postsArr.map((e) =>
                 <MediumCard>
                 <ImageWrapperMed>
-                    <img src={post.image} alt={'Medium Card'}/>
+                    <img src={e.image} alt={'Medium Card'}/>
                 </ImageWrapperMed>
+                <NavLink key={e.id} to={`/post/${e.id}`}>
                 <TextContentMed>
-                <DataPostMed>{post.date}</DataPostMed>
-                <TitlePostMed>{post.title}</TitlePostMed>
+                <DataPostMed>{e.date}</DataPostMed>
+                <TitlePostMed>{e.title}</TitlePostMed>
                 </TextContentMed>
+                </NavLink>
                 <ButtonsForCardMed>
                     <LikesWrapper>
                         <Like>
                             <img src={like} alt={'like'}/>
-                            <p>{post.lesson_num}</p>
+                            <p>{e.lesson_num}</p>
                         </Like>
                         <Dislike>
                             <img src={dislike} alt={'dislike'}/>
@@ -88,27 +89,27 @@ export const BigCardWrapper = () => {
                     </OptionWrapper>
                 </ButtonsForCardMed>
             </MediumCard>
-            </NavLink>
             ).slice(3,7)}
             </MediumCardWrapper>;
             </WrLeft>
 
             <LittleCardWrapper>
-                {posts.map((post) =>
-                    <NavLink key={post.id} to={`/post/${post.id}`}>
+                {postsArr.map((e) =>
                     <LittleCard>
+                        <NavLink key={e.id} to={`/post/${e.id}`}>
                         <TextContentLit>
-                            <DataPostLit>{post.date}</DataPostLit>
-                            <TitlePostLit>{post.title}</TitlePostLit>
+                            <DataPostLit>{e.date}</DataPostLit>
+                            <TitlePostLit>{e.title}</TitlePostLit>
                         </TextContentLit>
+                        </NavLink>
                         <ImageWrapperLit>
-                            <img src={post.image} alt={'Medium Card'}/>
+                            <img src={e.image} alt={'Medium Card'}/>
                         </ImageWrapperLit>
                         <ButtonsForCard>
                             <LikesWrapper>
                                 <Like>
                                     <img src={like} alt={'like'}/>
-                                    <p>{post.lesson_num}</p>
+                                    <p>{e.lesson_num}</p>
                                 </Like>
                                 <Dislike>
                                     <img src={dislike} alt={'dislike'}/>
@@ -121,7 +122,6 @@ export const BigCardWrapper = () => {
                             </OptionWrapper>
                         </ButtonsForCard>
                     </LittleCard>
-                    </NavLink>
                 ).slice(3,9)}
             </LittleCardWrapper>;
                 </Wrapper>

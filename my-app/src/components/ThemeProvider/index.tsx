@@ -11,7 +11,7 @@ type ActionType = {
     type: string
 }
 
-const themeReducer = (state: typeof initialStore, action: object & ActionType) => {
+export const themeReducer = (state: typeof initialStore, action: object & ActionType) => {
     switch (action.type) {
         case "LIGHTMODE":
             return {darkMode: false};

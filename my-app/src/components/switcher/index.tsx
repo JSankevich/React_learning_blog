@@ -1,5 +1,4 @@
 import React, {useContext} from "react";
-import ReactDOM from "react-dom";
 import styled from "styled-components";
 import {ThemeContext} from "../ThemeProvider";
 
@@ -65,5 +64,3 @@ const CheckBox = styled.input`
   }
 `;
 
-//const rootElement = document.getElementById("root");
-//ReactDOM.render(<App />, rootElement);

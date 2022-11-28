@@ -6,7 +6,6 @@ export const Container = styled.div `
     display: flex;
     justify-content: center;
     align-items: center;
-    
     flex-direction: column;
     border: 1px solid #DADADA;
     margin: 72px auto;
@@ -54,6 +53,10 @@ export const BackHome = styled.p `
     color: #313037;
     margin-bottom: 32px;
     margin-top: 72px;
+  
+    a {
+      text-decoration: none;
+    }  
 `;
 
 
