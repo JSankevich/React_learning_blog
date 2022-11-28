@@ -51,6 +51,10 @@ export const ButtonWrapper = styled.div `
     align-items: center;
     margin-top: 48px;
   
+  a {
+    text-decoration: none;
+  }
+  
   button {
     padding: 16px 32px;
     width: 544px;

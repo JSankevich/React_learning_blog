@@ -30,13 +30,14 @@ export const BigCardWrapper = () => {
             <Wrapper>
             <WrLeft>
             {postsArr.map((e) =>
-            <NavLink key={e.id} to={`/post/${e.id}`}>
             <BigCard>
+                <NavLink key={e.id} to={`/post/${e.id}`}>
                 <TextContent>
                     <DataPost>{e.date}</DataPost>
                     <TitlePost>{e.title}</TitlePost>
                     <TextPost>{e.text}</TextPost>
                 </TextContent>
+                </NavLink>
                 <ImageWrapper>
                     <img src={e.image} alt={'Big Card'}/>
                 </ImageWrapper>
@@ -52,25 +53,25 @@ export const BigCardWrapper = () => {
                         </Dislike>
                     </LikesWrapper>
                     <OptionWrapper>
-                        <Save><img src={Bookmark} alt={'bookmark'}/></Save>
+                        <Save onClick={():void => console.log('clicked')}><img src={Bookmark} alt={'bookmark'}/></Save>
                         <More><img src={MoreHorizontal} alt={'more'}/></More>
                     </OptionWrapper>
                 </ButtonsForCard>
             </BigCard>
-            </NavLink>
             ).slice(2,3)};
 
             <MediumCardWrapper>
             {postsArr.map((e) =>
-                <NavLink key={e.id} to={`/post/${e.id}`}>
                 <MediumCard>
                 <ImageWrapperMed>
                     <img src={e.image} alt={'Medium Card'}/>
                 </ImageWrapperMed>
+                <NavLink key={e.id} to={`/post/${e.id}`}>
                 <TextContentMed>
                 <DataPostMed>{e.date}</DataPostMed>
                 <TitlePostMed>{e.title}</TitlePostMed>
                 </TextContentMed>
+                </NavLink>
                 <ButtonsForCardMed>
                     <LikesWrapper>
                         <Like>
@@ -88,19 +89,19 @@ export const BigCardWrapper = () => {
                     </OptionWrapper>
                 </ButtonsForCardMed>
             </MediumCard>
-            </NavLink>
             ).slice(3,7)}
             </MediumCardWrapper>;
             </WrLeft>
 
             <LittleCardWrapper>
                 {postsArr.map((e) =>
-                    <NavLink key={e.id} to={`/post/${e.id}`}>
                     <LittleCard>
+                        <NavLink key={e.id} to={`/post/${e.id}`}>
                         <TextContentLit>
                             <DataPostLit>{e.date}</DataPostLit>
                             <TitlePostLit>{e.title}</TitlePostLit>
                         </TextContentLit>
+                        </NavLink>
                         <ImageWrapperLit>
                             <img src={e.image} alt={'Medium Card'}/>
                         </ImageWrapperLit>
@@ -121,7 +122,6 @@ export const BigCardWrapper = () => {
                             </OptionWrapper>
                         </ButtonsForCard>
                     </LittleCard>
-                    </NavLink>
                 ).slice(3,9)}
             </LittleCardWrapper>;
                 </Wrapper>

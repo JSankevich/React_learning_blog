@@ -8,15 +8,16 @@ import {signUpSaga} from "../../saga/signUp";
 import {postReducerType} from "../posts/types";
 import {signInSaga} from "../../saga/signIn";
 import {all} from "redux-saga/effects"
+import {themeReducer} from "../../components/ThemeProvider";
 
 export const useAppSelector: TypedUseSelectorHook<postReducerType> = useSelector;
-
-
+//export const useThemeSelector: TypedUseSelectorHook<themeReducerType> = useSelector;
 
 const rootReducer = combineReducers(
     {
           postReducer,
           authReducer,
+//          themeReducer,
     }
 )
 

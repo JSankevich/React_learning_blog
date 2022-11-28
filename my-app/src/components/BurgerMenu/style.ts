@@ -66,7 +66,7 @@ span {
 `;
 
 export const RightPanel = styled.div `
-  width: 314px;
+  width: 168px;
   height: 99%;
   display: flex;
   flex-direction: row;
@@ -117,19 +117,60 @@ export const SearchInput = styled.div `
   }
 `;
 
+export const LogInWrapper = styled.div `
+  width: 84px;
+  height: 99%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #5360CD;
+  cursor: pointer;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+`;
+
 export const MenuWrapper = styled.ul `
     position: fixed;
     height: 100%;
+    background-color: #FFFFFF;
     width: 234px;
-    top: 78px;
+    top: 85px;
     transition: all 0.2s;
 
     li {
       list-style-type: none;
       width: 236px;
       height: 83px;
-      margin-top: 5px;
+      margin-top: -2px;
     }
+`;
+
+export const ButtonMenu = styled.div `
+    width: 236px;
+    height: 83px;
+    border: 1px solid #E8E8E8;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #313037;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  
+    a {
+      text-decoration: none;
+    }
+  
+    &:active {
+        color: #2231AA;
+    }
+
 `;
 
 

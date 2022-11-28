@@ -3,7 +3,7 @@ import { ButtonWrapper } from './style';
 
 export type ButtonProps = {
     text: string,
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 export const Button = ({text}:ButtonProps, {onClick}: ButtonProps): ReactElement => {

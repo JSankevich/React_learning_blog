@@ -4,10 +4,10 @@ import {
     SIGNIN_REQUEST,
     SignInError,
     SignInPayload,
-    SignInSuccessPayload,
+    SignInSuccessPayload, SignUpSuccessPayload,
 } from "../redux/authReducer/type";
-import {signInFailure, signInSuccess} from "../redux/authReducer/action";
-//import {getProfile} from "../services/loginService";
+import {registerSuccess, signInFailure, signInSuccess} from "../redux/authReducer/action";
+import {getProfile} from "../saga/utils/index";
 
 
 const signInRequest = async (
@@ -26,7 +26,6 @@ const signInRequest = async (
     )
 
     const data = await response.json()
-
     if (!response.ok) {
         return Promise.reject(data as SignInError)
     }
@@ -39,11 +38,13 @@ const signInRequest = async (
 
 export function* signIn(action: PayloadAction<SignInPayload>) {
     try {
-        const data: SignInSuccessPayload = yield call(signInRequest, action.payload)
-        yield put(signInSuccess(data))
-        // @ts-ignore
-        // const userInfo: any = yield call(getProfile);
+        yield call(signInRequest, action.payload)
+
+
+        const userInfo: SignUpSuccessPayload = yield call(getProfile);
         console.log(userInfo);
+        // debugger;
+        yield put(registerSuccess(userInfo))
     } catch (error: any) {
         yield put(signInFailure(error))
     }

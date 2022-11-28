@@ -33,13 +33,20 @@ export const authReducer = (state = initialState, action: AuthActions) => {
                 error: action.payload,
             };
 
-        case SIGNUP_SUCCESS || REGISTER_SUCCESS:
+        case SIGNUP_SUCCESS:
             debugger
             return {
                 ...state,
                 // pending: false,
                 user: action.payload,
                 error: null,
+            };
+
+        case REGISTER_SUCCESS:
+            debugger
+            return {
+                user: action.payload,
+                error: {},
             };
 
         default:

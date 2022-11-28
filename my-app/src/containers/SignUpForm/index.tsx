@@ -1,10 +1,9 @@
 import React, {ReactElement, useState} from "react";
 import {CustomInput} from "../../components/custom input";
-import {Button} from "../../components/button";
 import {Title} from "../../components/Title";
 import {NavLink} from "react-router-dom";
 import {ButtonWrapper, ContainerSignUp, HaveAccount, Home} from "./style";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {signUpRequest} from "../../redux/authReducer/action";
 
 type Values = {
@@ -23,11 +22,12 @@ export const SignUpForm = (): ReactElement => {
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-        e.preventDefault();
-        setValue((prevState: Values) => {
+//        e.preventDefault();
+
+        setValue((prevValue: Values) => {
             return (
                 {
-                    ...prevState,
+                    ...prevValue,
                     [e.target.name]: e.target.value,
                 }
             )
@@ -37,6 +37,7 @@ export const SignUpForm = (): ReactElement => {
     const dispatch = useDispatch();
     const SentForm = () => {
         dispatch(signUpRequest(value))
+        console.log(value)
     }
 
         return (
@@ -44,13 +45,14 @@ export const SignUpForm = (): ReactElement => {
             <Home><NavLink to="/">Back to home</NavLink></Home>
             <Title text={'Sign Up'} />
             <ContainerSignUp>
-                <form onSubmit={SentForm}>
+
                 <CustomInput
                     type={'text'}
                     placeholder={'Your name'}
                     label={'Name'}
                     name={'username'}
                     value={value.username}
+                    error
                     onChange={handleChange}
                 />
                 <CustomInput
@@ -59,6 +61,7 @@ export const SignUpForm = (): ReactElement => {
                     label={'Email'}
                     name={'email'}
                     value={value.email}
+                    error
                     onChange={handleChange}
                 />
                 <CustomInput
@@ -67,6 +70,7 @@ export const SignUpForm = (): ReactElement => {
                     label={'Password'}
                     name={'password'}
                     value={value.password}
+                    error
                     onChange={handleChange}
                 />
                     {/*//<CustomInput
@@ -78,9 +82,8 @@ export const SignUpForm = (): ReactElement => {
                     onChange={handleChange}
                 />//*/}
                 <ButtonWrapper>
-                    <button>Sign Up</button>
+                    <button onClick={SentForm}>Sign Up</button>
                 </ButtonWrapper>
-                </form>
                 <HaveAccount>Already have an account? <NavLink to="/SignIn"><span>Sign In</span></NavLink></HaveAccount>
             </ContainerSignUp>
         </>

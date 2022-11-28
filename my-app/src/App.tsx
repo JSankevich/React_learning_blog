@@ -8,7 +8,7 @@ import {Routes, Route} from "react-router-dom";
 import {SelectedPost} from "./containers/SelectedPost";
 import {SignUpForm} from "./containers/SignUpForm";
 import {Switcher} from "./components/switcher";
-import {ActivationRoute} from "./containers/Act";
+import {ActivationRoute} from "./containers/ActivationRoute";
 
 
 function App() {

@@ -7,13 +7,12 @@ import {signUpFailure, signUpRequest, signUpSuccess} from "../redux/authReducer/
 const fetchData = async (
     payload: SignUpPayload
 ): Promise<SignUpSuccessPayload> => {
-    debugger
     const headers = {
         Accept: 'application/json',
-        'Content-Type': 'application/json;charset=utf-8',
+        'Content-Type': 'application/json',
+        //;charset=utf-8
     }
-    console.log('fdsf');
-    const response = await fetch('https://studapi.teachmeskills.by/auth/users', {
+    const response = await fetch("https://studapi.teachmeskills.by/auth/users/", {
         method: 'POST',
         body: JSON.stringify(payload),
         headers,
@@ -23,10 +22,11 @@ const fetchData = async (
 
     console.log(data)
     if (!response.ok) {
+        console.log ('ok')
         return Promise.reject(data)
     }
 
-    return data as SignUpSuccessPayload
+    return data as SignUpSuccessPayload;
 }
 
 export function* signUp(action: PayloadAction<SignUpPayload>) {

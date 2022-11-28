@@ -43,4 +43,7 @@ export const signInFailure = (payload: SignInError) => ({
     payload: payload
 });
 
-
+export const registerSuccess = (profile: SignUpSuccessPayload) => ({
+    type: REGISTER_SUCCESS,
+    payload: profile,
+});
