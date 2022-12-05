@@ -51,7 +51,7 @@ export const Burger = (): ReactElement => {
         {menuActive && <MenuWrapper>
             <li><Index username={'Yulia Sankevich'} /></li>
             <li><ButtonMenu><NavLink to='/'>Home</NavLink></ButtonMenu></li>
-            <li><ButtonMenu>Add post</ButtonMenu></li>
+            <li><NavLink to='/addPost'><ButtonMenu>Add post</ButtonMenu></NavLink></li>
          </MenuWrapper>}
         </>
     )

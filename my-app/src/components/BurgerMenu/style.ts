@@ -145,6 +145,10 @@ export const MenuWrapper = styled.ul `
       width: 236px;
       height: 83px;
       margin-top: -2px;
+      
+      a {
+        text-decoration: none;
+      }
     }
 `;
 
