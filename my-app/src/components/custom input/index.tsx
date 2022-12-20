@@ -3,10 +3,10 @@ import { InputWrapper, Wrapper } from "./style";
 type CustomInputProps = {
     type: 'password' | 'email' | 'text',
     name?: string,
-    placeholder: 'Your email' | 'Your password' | 'Your name' | 'Confirm password',
+    placeholder: 'Your email' | 'Your password' | 'Your name' | 'Confirm password' | 'Add your text',
     value?: string,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
-    label: 'Email' | 'Password' | 'Name' | 'Confirm password',
+    label: 'Email' | 'Password' | 'Name' | 'Confirm password' | 'Title' | 'lesson_num' | 'Publish at' | 'Image' | 'Description' | 'Text',
     error?: boolean,
 }
 export const CustomInput = (props: CustomInputProps): ReactElement => {

@@ -9,6 +9,8 @@ import {SelectedPost} from "./containers/SelectedPost";
 import {SignUpForm} from "./containers/SignUpForm";
 import {Switcher} from "./components/switcher";
 import {ActivationRoute} from "./containers/ActivationRoute";
+import {PaginationRoute} from "./containers/PaginationRoute";
+import {AddPost} from "./containers/AddPost";
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
                 <Route path="/SignUp" element={<SignUpForm />} />
                 <Route path="/post/:id" element={<SelectedPost />} />
                 <Route path="/activate/:uid/:token" element={<ActivationRoute />} />
+                <Route path="/pagination" element={<PaginationRoute />} />
+                <Route path="/addPost" element={<AddPost />} />
             </Routes>
         </Layout>
         </ThemeProvider>
